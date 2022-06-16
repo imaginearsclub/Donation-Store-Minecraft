@@ -69,6 +69,6 @@ public class QueueTask {
     }
 
     public void runCommand(DonationStorePlugin plugin, String command) {
-        plugin.getServer().getCommandManager().execute(plugin.getServer().getConsoleCommandSource(), command);
+        plugin.getServer().getCommandManager().executeAsync(plugin.getServer().getConsoleCommandSource(), command);
     }
 }
