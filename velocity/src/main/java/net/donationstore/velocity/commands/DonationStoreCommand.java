@@ -2,6 +2,7 @@ package net.donationstore.velocity.commands;
 
 import com.velocitypowered.api.command.Command;
 import com.velocitypowered.api.command.CommandSource;
+import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.Player;
 import net.donationstore.commands.CommandFactory;
 import net.donationstore.velocity.config.FileConfiguration;
@@ -13,7 +14,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class DonationStoreCommand implements Command {
+public class DonationStoreCommand implements SimpleCommand {
 
     private FileConfiguration fileConfiguration;
     private CommandFactory commandFactory;
@@ -24,7 +25,10 @@ public class DonationStoreCommand implements Command {
     }
 
     @Override
-    public void execute(@NonNull CommandSource commandSender, String[] strings) {
+    public void execute(Invocation invocation) {
+        CommandSource commandSender = invocation.source();
+        String[] strings = invocation.arguments();
+
         if(strings.length < 1) {
             Log.send(commandSender, "Webstore and Helpdesk for Game Servers");
             Log.send(commandSender, "Velocity Plugin - Version 2.2");
