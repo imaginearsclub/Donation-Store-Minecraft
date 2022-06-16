@@ -2,8 +2,10 @@ package net.donationstore.velocity.logging;
 
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.proxy.Player;
-import net.kyori.text.TextComponent;
-import net.kyori.text.format.TextColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
 
 import java.util.List;
 
@@ -11,9 +13,8 @@ public class Log {
 
     public static void send(CommandSource sender, String log) {
         if (sender instanceof Player) {
-            TextComponent message = TextComponent.builder("[Donation Store]").color(TextColor.GREEN)
-                    .append(TextComponent.builder(String.format(": %s", log)).color(TextColor.WHITE).build())
-                    .build();
+            TextComponent message = Component.text("[Donation Store]").color(NamedTextColor.GREEN)
+                    .append(Component.text(String.format(": %s", log)).color(NamedTextColor.WHITE));
 
             sender.sendMessage(message);
         } else {
